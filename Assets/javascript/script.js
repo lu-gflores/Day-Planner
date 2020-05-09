@@ -2,16 +2,16 @@
 $(document).ready(function () {
   var currentDateAndTime = Date(Date.now());
   $("#currentDay").text(currentDateAndTime);
-  
+
   //updating hours
   function updateHours() {
     var currentHour = new Date().getHours();//current military time
-    //looping through time-blocks
+    //looping through time-blocks 
     for (var i = 9; i < 18; i++) {
       if (currentHour > i) {
         $("#hour-" + i).addClass("past");
       }
-      else if (currentHour == i) {
+      else if (currentHour === i) {
         $("#hour-" + i).removeClass("past").addClass("present");
        
       } else {
@@ -20,10 +20,21 @@ $(document).ready(function () {
     }
   }
   updateHours();
+
+function init(hour) {
+  var h = localStorage.getItem(hour);
+
+}
   
-  //saving description item 
-  // $(".saveBtn").on("click", function() {
-  //   var 
-  // })
+//reRun updateHours every 60 seconds
+setInterval(updateHours, 60000);
+//saving description item 
+$(".saveBtn").on("click", function() {
+  var descript = $(".description");
+  var timeSaved = $("#hour-");
+  localStorage.setItem(descript, timeSaved);
+  
+})
+  
 
 });
