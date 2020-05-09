@@ -14,15 +14,13 @@ $(document).ready(function () {
   //updating hours
   function updateHours() {
     var currentHour = new Date().getHours();//current military time
-
     //looping through time-blocks 
     for (var i = 9; i < 18; i++) {
       //loading local storage
       var hourText = localStorage.getItem(i);
       if (hourText !== null) {
-        $("#hour-" + i).val(hourText);
+        $("#text" + i).val(hourText);
       }
-
       if (currentHour > i) {
         $("#hour-" + i).addClass("past");
       }
